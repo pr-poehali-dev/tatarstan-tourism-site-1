@@ -197,7 +197,7 @@ export const attractions: Attraction[] = [
       "https://resize.tripster.ru/QGJa4-_1bB3l83-58XDZx_nnkMs=/fit-in/1080x810/filters:no_upscale()/https://cdn.tripster.ru/photos/17741dd8-09c9-4771-9443-7f278cc4d429.jpg",
       "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800",
     ],
-    coordinates: [55.788611, 49.123611],
+    coordinates: [55.782069, 49.112486],
     category: "Музей",
   },
   {
