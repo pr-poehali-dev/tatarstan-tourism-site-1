@@ -168,7 +168,7 @@ const Index = () => {
                   <img
                     src={attraction.images[0]}
                     alt={attraction.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-30"
                   />
                 </div>
                 <div className="p-4">
