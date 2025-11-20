@@ -28,7 +28,7 @@ export const attractions: Attraction[] = [
       "https://avatars.mds.yandex.net/i?id=6613a5b0b85d787e4ee163eaf9b37680_l-10143227-images-thumbs&n=13",
     ],
 
-    coordinates: [55.798551, 49.105324],
+    coordinates: [55.798889, 49.106111],
     category: "Архитектура",
   },
   {
