@@ -181,7 +181,7 @@ export const attractions: Attraction[] = [
       "https://avatars.mds.yandex.net/get-altay/2786941/2a000001763c870a2ceea1c2d643325d6a58/orig",
       "https://kuda-kazan.ru/uploads/87a5cb5e5c8d7e363fafa6725ce0309b.jpg",
     ],
-    coordinates: [55.830278, 49.132778],
+    coordinates: [55.812777, 49.108333],
     category: "Архитектура",
   },
   {
