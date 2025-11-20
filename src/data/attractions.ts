@@ -96,7 +96,7 @@ export const attractions: Attraction[] = [
       "https://avatars.mds.yandex.net/i?id=c03bfe628581ed64f54e0e259588c732_l-3738942-images-thumbs&n=13",
       "https://avatars.dzeninfra.ru/get-zen_doc/9846546/pub_64b90d7486aede2bdab32ab0_64b90d8086aede2bdab32c6f/scale_1200",
     ],
-    coordinates: [55.785278, 49.222222],
+    coordinates: [55.8005664, 48.9748514],
     category: "Архитектура",
   },
   {
