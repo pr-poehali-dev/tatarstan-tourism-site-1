@@ -25,6 +25,7 @@ export const attractions: Attraction[] = [
       "https://f78e1a6a-ca4c-458a-b3f0-9f53a2bad2a5.selstorage.ru/2025-09-25/6BRXHbGx5E1GSCwk.png",
       "https://avatars.mds.yandex.net/i?id=fb04b9b9768d9a0b94bb8e87f1ae644a_l-12486332-images-thumbs&n=13",
       "https://avatars.mds.yandex.net/i?id=215816266c3570ec96a68ab69b82245b61e83666-16450821-images-thumbs&n=13",
+      "https://avatars.mds.yandex.net/i?id=6613a5b0b85d787e4ee163eaf9b37680_l-10143227-images-thumbs&n=13",
     ],
 
     coordinates: [55.798551, 49.105324],
