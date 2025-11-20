@@ -62,7 +62,7 @@ export const attractions: Attraction[] = [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Kazan_Kremlin_Soyembika_Tower_08-2016_img1.jpg/960px-Kazan_Kremlin_Soyembika_Tower_08-2016_img1.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_%D0%A1%D1%8E%D1%8E%D0%BC%D0%B1%D0%B8%D0%BA%D0%B5_%E2%80%94_%D0%9A%D0%B0%D0%B7%D0%B0%D0%BD%D1%8C.jpg/1200px-%D0%91%D0%B0%D1%88%D0%BD%D1%8F_%D0%A1%D1%8E%D1%8E%D0%BC%D0%B1%D0%B8%D0%BA%D0%B5_%E2%80%94_%D0%9A%D0%B0%D0%B7%D0%B0%D0%BD%D1%8C.jpg?20220930164539",
     ],
-    coordinates: [55.799167, 49.105833],
+    coordinates: [55.800501, 49.105184],
     category: "Архитектура",
   },
   {
