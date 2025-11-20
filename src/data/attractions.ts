@@ -230,7 +230,7 @@ export const attractions: Attraction[] = [
       "https://avatars.mds.yandex.net/i?id=09b0d12f24d274bb25c6d993fa6f19bb_l-7544473-images-thumbs&n=13",
       "https://cdn1.flamp.ru/b5fb222ce59db39137ab649c48f4a74c_600_600.jpg",
     ],
-    coordinates: [55.789167, 49.121944],
+    coordinates: [55.786932, 49.119636],
     category: "Музей",
   },
   {
