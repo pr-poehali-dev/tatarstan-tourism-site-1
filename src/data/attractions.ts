@@ -343,7 +343,7 @@ export const attractions: Attraction[] = [
       "https://avatars.mds.yandex.net/i?id=423ab7c0409bb73855c8f521bc90dab22545e149d628a1c0-13071435-images-thumbs&n=13",
       "https://cdn.culture.ru/images/b7fdcbb3-3615-5e79-81d9-c090339e2174",
     ],
-    coordinates: [55.767255, 52.06677],
+    coordinates: [55.754166, 52.054722],
     category: "Музей",
   },
 ];
