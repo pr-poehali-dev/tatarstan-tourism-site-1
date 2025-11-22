@@ -79,7 +79,7 @@ export const attractions: Attraction[] = [
       "https://cdn.culture.ru/images/21ed8406-263d-5341-8f40-8cb1e41f4124",
       "https://i.pinimg.com/originals/35/e8/80/35e880096ec38d70bfda34343bfe5e83.jpg",
     ],
-    coordinates: [55.790278, 49.122222],
+    coordinates: [55.787549, 49.121404],
     category: "Прогулки",
   },
   {
