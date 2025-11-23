@@ -263,7 +263,7 @@ const Index = () => {
         </div>
       </header>
 
-      <section className="from-primary/10 to-white rounded-0 my-0 mx-0 px-0 py-[286px] bg-emerald-300">
+      <section className="from-primary/10 to-white my-0 px-0 py-[286px] bg-emerald-100 mx-0 rounded-0">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-heading font-bold text-foreground mb-6">
             Достопримечательности Республики Татарстан
