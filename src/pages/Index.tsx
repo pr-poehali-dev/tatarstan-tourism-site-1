@@ -266,9 +266,9 @@ const Index = () => {
               <Sheet>
                 <SheetTrigger asChild>
                   <button className="flex items-center gap-2 text-foreground hover:text-primary transition-colors">
-                    <span className="text-2xl">—</span>
-                    <span className="text-2xl">—</span>
-                    <span className="text-2xl">—</span>
+                    <span className="text-2xl"></span>
+                    <span className="text-2xl"></span>
+                    <span className="text-2xl">☰</span>
                   </button>
                 </SheetTrigger>
                 <SheetContent side="right" className="w-80">
