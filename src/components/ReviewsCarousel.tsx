@@ -16,7 +16,7 @@ const reviews: Review[] = [
   {
     id: 1,
     name: "Демьяненко Никита",
-    image: "<a href="https://ibb.co/KzcQp60x"><img src="https://i.ibb.co/KzcQp60x/2025-12-18-191105.png" alt="2025-12-18-191105" border="0"></a>",
+    image: "https://yapx.ru/album/cXLWS",
     rating: 5,
     topic: "Прекрасный путеводитель",
     text: "Отличный сайт для планирования поездки по Татарстану. Вся информация в одном месте, карта удобная, описания подробные.",
@@ -92,7 +92,7 @@ const ReviewsCarousel = () => {
           const cardWidth = 320;
           const gap = 16;
           const scrollAmount = cardWidth + gap;
-          
+
           scrollRef.current.scrollBy({
             left: scrollAmount,
             behavior: "smooth",
