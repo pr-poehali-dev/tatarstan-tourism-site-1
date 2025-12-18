@@ -526,7 +526,7 @@ const Index = () => {
 
       <section id="reviews" className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-heading font-bold text-center mb-4">
+          <h2 className="text-4xl font-heading font-bold text-center mb-4 text-slate-800">
             Отзывы туристов
           </h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
