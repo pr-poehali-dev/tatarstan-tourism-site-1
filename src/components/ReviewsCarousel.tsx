@@ -15,8 +15,8 @@ type Review = {
 const reviews: Review[] = [
   {
     id: 1,
-    name: "Алексей Иванов",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex",
+    name: "Демьяненко Никита",
+    image: "https://ibb.co/KzcQp60x",
     rating: 5,
     topic: "Прекрасный путеводитель",
     text: "Отличный сайт для планирования поездки по Татарстану. Вся информация в одном месте, карта удобная, описания подробные.",
@@ -31,9 +31,9 @@ const reviews: Review[] = [
   },
   {
     id: 3,
-    name: "Дмитрий Смирнов",
+    name: "HiroBatory",
     image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Dmitry",
-    rating: 4,
+    rating: 3,
     topic: "Хорошая подборка",
     text: "Много интересных мест, о которых раньше не знал. Карта помогла построить удобный маршрут. Рекомендую всем туристам.",
   },
@@ -92,7 +92,7 @@ const ReviewsCarousel = () => {
           const cardWidth = 320;
           const gap = 16;
           const scrollAmount = cardWidth + gap;
-          
+
           scrollRef.current.scrollBy({
             left: scrollAmount,
             behavior: "smooth",
