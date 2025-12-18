@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   Accordion,
   AccordionContent,
@@ -11,6 +12,7 @@ import {
 import Icon from "@/components/ui/icon";
 import { attractions, Attraction } from "@/data/attractions";
 import YandexMap from "@/components/YandexMap";
+import ReviewsCarousel from "@/components/ReviewsCarousel";
 
 type News = {
   id: number;
@@ -233,32 +235,67 @@ const Index = () => {
             >
               Главная
             </button>
-            <nav className="flex gap-6">
-              <button
-                onClick={() => scrollToSection("attractions")}
-                className="text-foreground hover:text-primary transition-colors"
-              >
-                Достопримечательности
-              </button>
-              <button
-                onClick={() => scrollToSection("news")}
-                className="text-foreground hover:text-primary transition-colors"
-              >
-                Новости
-              </button>
-              <button
-                onClick={() => scrollToSection("map")}
-                className="text-foreground hover:text-primary transition-colors"
-              >
-                Перейти к карте
-              </button>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="text-foreground hover:text-primary transition-colors"
-              >
-                Обратная связь
-              </button>
-            </nav>
+            <div className="flex items-center gap-6">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <button className="flex items-center gap-2 text-foreground hover:text-primary transition-colors">
+                    <span className="text-2xl">—</span>
+                    <span className="text-2xl">—</span>
+                    <span className="text-2xl">—</span>
+                  </button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-80">
+                  <div className="flex flex-col gap-6 mt-8">
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start gap-3"
+                      onClick={() => {
+                        window.location.href = 'https://accounts.google.com/signin';
+                      }}
+                    >
+                      <Icon name="LogIn" size={20} />
+                      Войти через Google
+                    </Button>
+                    
+                    <div className="border-t pt-6">
+                      <h3 className="font-semibold mb-4 text-sm text-muted-foreground uppercase tracking-wide">Навигация</h3>
+                      <div className="flex flex-col gap-3">
+                        <button
+                          onClick={() => scrollToSection("attractions")}
+                          className="text-left px-4 py-2 rounded-md hover:bg-accent transition-colors"
+                        >
+                          Достопримечательности
+                        </button>
+                        <button
+                          onClick={() => scrollToSection("news")}
+                          className="text-left px-4 py-2 rounded-md hover:bg-accent transition-colors"
+                        >
+                          Новости
+                        </button>
+                        <button
+                          onClick={() => scrollToSection("map")}
+                          className="text-left px-4 py-2 rounded-md hover:bg-accent transition-colors"
+                        >
+                          Карта
+                        </button>
+                        <button
+                          onClick={() => scrollToSection("reviews")}
+                          className="text-left px-4 py-2 rounded-md hover:bg-accent transition-colors"
+                        >
+                          Отзывы
+                        </button>
+                        <button
+                          onClick={() => scrollToSection("contact")}
+                          className="text-left px-4 py-2 rounded-md hover:bg-accent transition-colors"
+                        >
+                          Обратная связь
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
       </header>
@@ -457,6 +494,18 @@ const Index = () => {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+        </div>
+      </section>
+
+      <section id="reviews" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-heading font-bold text-center mb-4">
+            Отзывы туристов
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Узнайте, что думают другие путешественники о достопримечательностях Татарстана
+          </p>
+          <ReviewsCarousel />
         </div>
       </section>
 
