@@ -236,6 +236,33 @@ const Index = () => {
               Главная
             </button>
             <div className="flex items-center gap-6">
+              <nav className="flex gap-6">
+                <button
+                  onClick={() => scrollToSection("attractions")}
+                  className="text-foreground hover:text-primary transition-colors"
+                >
+                  Достопримечательности
+                </button>
+                <button
+                  onClick={() => scrollToSection("news")}
+                  className="text-foreground hover:text-primary transition-colors"
+                >
+                  Новости
+                </button>
+                <button
+                  onClick={() => scrollToSection("map")}
+                  className="text-foreground hover:text-primary transition-colors"
+                >
+                  Перейти к карте
+                </button>
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  className="text-foreground hover:text-primary transition-colors"
+                >
+                  Обратная связь
+                </button>
+              </nav>
+              
               <Sheet>
                 <SheetTrigger asChild>
                   <button className="flex items-center gap-2 text-foreground hover:text-primary transition-colors">
