@@ -319,6 +319,32 @@ const Index = () => {
                         </button>
                       </div>
                     </div>
+
+                    <div className="border-t pt-6 mt-6">
+                      <div className="flex flex-col gap-3">
+                        <Button
+                          variant="default"
+                          className="w-full justify-start gap-3"
+                          onClick={() => {
+                            window.open('https://docs.google.com/forms/d/e/1FAIpQLSedn6MjQ5qIHRMMYHtDMJmee_-S47ubQSTLuikyCklLTagEpQ/viewform?usp=dialog', '_blank');
+                          }}
+                        >
+                          <Icon name="ClipboardCheck" size={20} />
+                          Пройти тест по достопримечательностям
+                        </Button>
+                        
+                        <Button
+                          variant="outline"
+                          className="w-full justify-start gap-3"
+                          onClick={() => {
+                            window.open('https://docs.google.com/forms/d/e/1FAIpQLSfz-qcrvNdKDRsPxcRdfwLrbLbCzMWCSjT-9Kj6Uql0qHwkkg/viewform?usp=publish-editor', '_blank');
+                          }}
+                        >
+                          <Icon name="MessageSquare" size={20} />
+                          Оставить отзыв
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                 </SheetContent>
               </Sheet>
