@@ -328,10 +328,7 @@ const Index = () => {
                           onClick={() => {
                             window.open('https://docs.google.com/forms/d/e/1FAIpQLSedn6MjQ5qIHRMMYHtDMJmee_-S47ubQSTLuikyCklLTagEpQ/viewform?usp=dialog', '_blank');
                           }}
-                        >
-                          <Icon name="ClipboardCheck" size={20} />
-                          Пройти тест по достопримечательностям
-                        </Button>
+                        >Тест по достопримечательностям</Button>
                         
                         <Button
                           variant="outline"
