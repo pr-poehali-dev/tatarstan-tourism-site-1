@@ -362,11 +362,11 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {showWelcome && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-primary/95 animate-fade-in">
-          <div className="text-center text-white animate-scale-in">
-            <h1 className="text-6xl font-heading font-bold mb-4">
+          <div className="text-center text-white animate-scale-in px-4">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-4">
               Изучаем Татарстан
             </h1>
-            <p className="text-xl">Откройте для себя красоту республики</p>
+            <p className="text-lg md:text-xl">Откройте для себя красоту республики</p>
           </div>
         </div>
       )}
@@ -380,8 +380,8 @@ const Index = () => {
             >
               Главная
             </button>
-            <div className="flex items-center gap-6">
-              <nav className="flex gap-6">
+            <div className="flex items-center gap-4 md:gap-6">
+              <nav className="hidden md:flex gap-6">
                 <button
                   onClick={() => scrollToSection("attractions")}
                   className="text-foreground hover:text-primary transition-colors"
@@ -411,9 +411,10 @@ const Index = () => {
               <Sheet>
                 <SheetTrigger asChild>
                   <button className="flex items-center gap-2 text-foreground hover:text-primary transition-colors">
-                    <span className="text-2xl"></span>
-                    <span className="text-2xl"></span>
-                    <span className="text-2xl">☰</span>
+                    <span className="text-2xl md:hidden">☰</span>
+                    <span className="hidden md:inline text-2xl"></span>
+                    <span className="hidden md:inline text-2xl"></span>
+                    <span className="hidden md:inline text-2xl">☰</span>
                   </button>
                 </SheetTrigger>
                 <SheetContent side="right" className="w-80">
@@ -495,21 +496,21 @@ const Index = () => {
         </div>
       </header>
 
-      <section className="from-primary/10 to-white my-0 px-0 py-[286px] bg-emerald-100 mx-0 rounded-0">
+      <section className="from-primary/10 to-white my-0 px-4 py-24 md:py-[286px] bg-emerald-100 mx-0 rounded-0">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-heading font-bold text-foreground mb-6">
+          <h1 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6">
             Достопримечательности Республики Татарстан
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Познакомьтесь с богатым культурным наследием Татарстана — от древних
             городов до современных арт-объектов
           </p>
         </div>
       </section>
 
-      <section id="map" className="py-16 bg-muted/30">
+      <section id="map" className="py-12 md:py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-heading font-bold text-center mb-12">
+          <h2 className="text-2xl md:text-4xl font-heading font-bold text-center mb-8 md:mb-12">
             Карта достопримечательностей
           </h2>
           <div className="max-w-6xl mx-auto">
@@ -521,12 +522,12 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="attractions" ref={attractionsRef} className="py-16">
+      <section id="attractions" ref={attractionsRef} className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-heading font-bold text-center mb-12">
+          <h2 className="text-2xl md:text-4xl font-heading font-bold text-center mb-8 md:mb-12">
             Достопримечательности
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6 mb-8">
             {attractions.slice(0, visibleAttractions).map((attraction) => (
               <Card
                 key={attraction.id}
@@ -572,12 +573,12 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="news" className="py-16 bg-muted/30">
+      <section id="news" className="py-12 md:py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-heading font-bold text-center mb-12">
+          <h2 className="text-2xl md:text-4xl font-heading font-bold text-center mb-8 md:mb-12">
             Новости
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6 mb-8">
             {news.slice(0, visibleNews).map((newsItem) => {
               const attraction = attractions.find(
                 (a) => a.id === newsItem.attractionId,
@@ -631,9 +632,9 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4 max-w-3xl">
-          <h2 className="text-4xl font-heading font-bold text-center mb-12">
+          <h2 className="text-2xl md:text-4xl font-heading font-bold text-center mb-8 md:mb-12">
             Часто задаваемые вопросы
           </h2>
           <Accordion type="single" collapsible className="space-y-4">
@@ -692,21 +693,21 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="reviews" className="py-20 bg-white">
+      <section id="reviews" className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-heading font-bold text-center mb-4 text-slate-800">ОТЗЫВЫ ЛЮДЕЙ О САЙТЕ</h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">Узнайте, что думают другие люди о сайте и достопримечательностях Татарстана</p>
+          <h2 className="text-2xl md:text-4xl font-heading font-bold text-center mb-4 text-slate-800">ОТЗЫВЫ ЛЮДЕЙ О САЙТЕ</h2>
+          <p className="text-sm md:text-base text-center text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto">Узнайте, что думают другие люди о сайте и достопримечательностях Татарстана</p>
           <ReviewsCarousel />
         </div>
       </section>
 
-      <footer id="contact" className="bg-foreground text-white py-12">
+      <footer id="contact" className="bg-foreground text-white py-8 md:py-12">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-2xl mx-auto mb-8">
-            <h3 className="text-2xl font-heading font-bold mb-4">
+            <h3 className="text-xl md:text-2xl font-heading font-bold mb-4">
               Обратная связь
             </h3>
-            <p className="mb-6">
+            <p className="text-sm md:text-base mb-6">
               Сайт был сделан в качестве проекта по информатике и участия в
               научной конференции Инженерная мысль ученика 10 класса Ганеева
               Эрнеста Тимуровича МБОУ Школа 70 г. Казань
@@ -739,11 +740,11 @@ const Index = () => {
         <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
           {selectedAttraction && (
             <div>
-              <DialogTitle className="text-4xl font-heading font-bold mb-6">
+              <DialogTitle className="text-2xl md:text-4xl font-heading font-bold mb-4 md:mb-6">
                 {selectedAttraction.name}
               </DialogTitle>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
                 {selectedAttraction.images.map((img, idx) => (
                   <img
                     key={idx}
@@ -754,31 +755,31 @@ const Index = () => {
                 ))}
               </div>
 
-              <div className="space-y-6">
-                <div className="flex gap-4 items-center">
-                  <span className="inline-flex items-center gap-1 text-muted-foreground">
+              <div className="space-y-4 md:space-y-6">
+                <div className="flex flex-wrap gap-3 md:gap-4 items-center">
+                  <span className="inline-flex items-center gap-1 text-sm md:text-base text-muted-foreground">
                     <Icon name="MapPin" size={18} />
                     {selectedAttraction.city}
                   </span>
-                  <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                  <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs md:text-sm font-medium">
                     {selectedAttraction.category}
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-heading font-semibold mb-3">
+                  <h3 className="text-xl md:text-2xl font-heading font-semibold mb-2 md:mb-3">
                     Описание
                   </h3>
-                  <p className="text-lg leading-relaxed">
+                  <p className="text-base md:text-lg leading-relaxed">
                     {selectedAttraction.fullDescription}
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-heading font-semibold mb-3">
+                  <h3 className="text-xl md:text-2xl font-heading font-semibold mb-2 md:mb-3">
                     История
                   </h3>
-                  <p className="text-lg leading-relaxed whitespace-pre-line">
+                  <p className="text-base md:text-lg leading-relaxed whitespace-pre-line">
                     {selectedAttraction.history}
                   </p>
                 </div>
@@ -790,7 +791,7 @@ const Index = () => {
 
       <Dialog open={!!selectedNews} onOpenChange={() => setSelectedNews(null)}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-          <DialogTitle className="text-3xl font-heading font-bold mb-4">
+          <DialogTitle className="text-2xl md:text-3xl font-heading font-bold mb-4">
             {selectedNews?.title}
           </DialogTitle>
           {selectedNews && (
@@ -802,9 +803,9 @@ const Index = () => {
                   "https://images.unsplash.com/photo-1586800463720-febbe6eb4028?w=800"
                 }
                 alt={selectedNews.title}
-                className="w-full h-96 object-cover rounded-lg mb-6"
+                className="w-full h-48 md:h-96 object-cover rounded-lg mb-4 md:mb-6"
               />
-              <p className="text-lg leading-relaxed">
+              <p className="text-base md:text-lg leading-relaxed">
                 {selectedNews.description}
               </p>
             </div>
