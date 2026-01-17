@@ -527,7 +527,7 @@ const Index = () => {
           <h2 className="text-2xl md:text-4xl font-heading font-bold text-center mb-8 md:mb-12">
             Достопримечательности
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6 mb-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-6 mb-8">
             {attractions.slice(0, visibleAttractions).map((attraction) => (
               <Card
                 key={attraction.id}
@@ -541,11 +541,11 @@ const Index = () => {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-30"
                   />
                 </div>
-                <div className="p-4">
-                  <h3 className="font-heading font-semibold text-lg mb-1">
+                <div className="p-2 md:p-4">
+                  <h3 className="font-heading font-semibold text-sm md:text-lg mb-1 line-clamp-2">
                     {attraction.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <p className="text-xs md:text-sm text-muted-foreground mb-2">
                     {attraction.city}
                   </p>
                   <span className="inline-block px-2 py-1 text-xs bg-primary/10 text-primary rounded">
@@ -578,7 +578,7 @@ const Index = () => {
           <h2 className="text-2xl md:text-4xl font-heading font-bold text-center mb-8 md:mb-12">
             Новости
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6 mb-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-6 mb-8">
             {news.slice(0, visibleNews).map((newsItem) => {
               const attraction = attractions.find(
                 (a) => a.id === newsItem.attractionId,
@@ -604,11 +604,11 @@ const Index = () => {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                   </div>
-                  <div className="p-4">
-                    <h3 className="font-heading font-semibold text-lg mb-1">
+                  <div className="p-2 md:p-4">
+                    <h3 className="font-heading font-semibold text-sm md:text-lg mb-1 line-clamp-2">
                       {newsItem.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2">
+                    <p className="text-xs md:text-sm text-muted-foreground line-clamp-2">
                       {newsItem.description}
                     </p>
                   </div>
