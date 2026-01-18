@@ -498,7 +498,7 @@ const Index = () => {
 
       <section className="from-primary/10 to-white my-0 px-4 py-24 md:py-[286px] bg-emerald-100 mx-0 rounded-0">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6">
+          <h1 className="md:text-5xl font-heading font-bold text-foreground mb-6 py-0 mx-0 px-0 text-xl">
             Достопримечательности Республики Татарстан
           </h1>
           <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto">
