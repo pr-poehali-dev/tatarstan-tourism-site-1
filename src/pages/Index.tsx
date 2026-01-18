@@ -13,6 +13,8 @@ import Icon from "@/components/ui/icon";
 import { attractions, Attraction } from "@/data/attractions";
 import YandexMap from "@/components/YandexMap";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
+import { useGoogleAuth } from "@/components/extensions/google-auth/useGoogleAuth";
+import { GoogleLoginButton } from "@/components/extensions/google-auth/GoogleLoginButton";
 
 type News = {
   id: number;
@@ -30,6 +32,46 @@ const Index = () => {
     useState<Attraction | null>(null);
   const [selectedNews, setSelectedNews] = useState<News | null>(null);
   const attractionsRef = useRef<HTMLDivElement>(null);
+
+  const auth = useGoogleAuth({
+    apiUrls: {
+      authUrl: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=auth-url',
+      callback: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=callback',
+      refresh: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=refresh',
+      logout: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=logout',
+    },
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('code')) {
+      auth.handleCallback(params).then((success) => {
+        if (success) {
+          window.history.replaceState({}, '', window.location.pathname);
+        }
+      });
+    }
+  }, []);
+
+  const auth = useGoogleAuth({
+    apiUrls: {
+      authUrl: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=auth-url',
+      callback: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=callback',
+      refresh: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=refresh',
+      logout: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=logout',
+    },
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('code')) {
+      auth.handleCallback(params).then((success) => {
+        if (success) {
+          window.history.replaceState({}, '', window.location.pathname);
+        }
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const hasSeenWelcome = sessionStorage.getItem("hasSeenWelcome");
@@ -419,16 +461,34 @@ const Index = () => {
                 </SheetTrigger>
                 <SheetContent side="right" className="w-80">
                   <div className="flex flex-col gap-6 mt-8">
-                    <Button
-                      variant="outline"
-                      className="w-full justify-start gap-3"
-                      onClick={() => {
-                        window.location.href = 'https://accounts.google.com/signin';
-                      }}
-                    >
-                      <Icon name="LogIn" size={20} />
-                      Войти через Google
-                    </Button>
+                    {auth.isAuthenticated ? (
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
+                          {auth.user?.avatar_url && (
+                            <img src={auth.user.avatar_url} alt="Avatar" className="w-10 h-10 rounded-full" />
+                          )}
+                          <div className="flex-1 min-w-0">
+                            <p className="font-medium truncate">{auth.user?.name || 'Пользователь'}</p>
+                            <p className="text-sm text-muted-foreground truncate">{auth.user?.email}</p>
+                          </div>
+                        </div>
+                        <Button
+                          variant="outline"
+                          className="w-full justify-start gap-3"
+                          onClick={auth.logout}
+                        >
+                          <Icon name="LogOut" size={20} />
+                          Выйти
+                        </Button>
+                      </div>
+                    ) : (
+                      <GoogleLoginButton
+                        onClick={auth.login}
+                        isLoading={auth.isLoading}
+                        buttonText="Вход"
+                        className="w-full justify-start gap-3"
+                      />
+                    )}
                     
                     <div className="border-t pt-6">
                       <h3 className="font-semibold mb-4 text-sm text-muted-foreground uppercase tracking-wide">Навигация</h3>
