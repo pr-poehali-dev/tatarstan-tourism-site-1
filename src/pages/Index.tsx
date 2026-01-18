@@ -67,28 +67,6 @@ const Index = () => {
     }, 300);
   };
 
-  const getStatusIcon = (status: News["status"]) => {
-    switch (status) {
-      case "all_good":
-        return "check-circle";
-      case "renovation":
-        return "wrench";
-      case "news":
-        return "newspaper";
-      default:
-        return "info";
-    }
-  };
-
-  const getStatusBadge = (status: News["status"]) => {
-    const badges = {
-      all_good: { text: "Все в порядке", class: "bg-green-100 text-green-800" },
-      renovation: { text: "Реставрация", class: "bg-yellow-100 text-yellow-800" },
-      news: { text: "Новости", class: "bg-blue-100 text-blue-800" },
-    };
-    return badges[status] || badges.all_good;
-  };
-
   const news: News[] = [
     {
       id: 1,
@@ -319,566 +297,521 @@ const Index = () => {
       description: "Богоявленский собор принимает прихожан.",
       status: "all_good",
     },
+    {
+      id: 33,
+      attractionId: 33,
+      title: "Археологические находки",
+      description:
+        "В Великом Болгаре обнаружены новые артефакты XIII века.",
+      status: "news",
+    },
+    {
+      id: 34,
+      attractionId: 34,
+      title: "День Победы",
+      description:
+        'У мемориала "Родина-мать" состоится торжественное возложение венков.',
+      status: "news",
+    },
+    {
+      id: 35,
+      attractionId: 35,
+      title: "Йога в парке",
+      description: "В Парке Тысячелетия проходят бесплатные занятия йогой.",
+      status: "news",
+    },
+    {
+      id: 36,
+      attractionId: 36,
+      title: "Все в порядке",
+      description: "Кремлёвская набережная открыта для прогулок.",
+      status: "all_good",
+    },
+    {
+      id: 37,
+      attractionId: 37,
+      title: "Литературный вечер",
+      description: "В Доме-музее Аксёнова пройдёт встреча с современными писателями.",
+      status: "news",
+    },
+    {
+      id: 38,
+      attractionId: 38,
+      title: "Пешеходная экскурсия",
+      description:
+        "В Старо-Татарской слободе стартовали вечерние экскурсии с гидом.",
+      status: "news",
+    },
+    {
+      id: 39,
+      attractionId: 39,
+      title: "Все в порядке",
+      description: 'ЗАГС "Казан" принимает заявки на регистрацию брака.',
+      status: "all_good",
+    },
+    {
+      id: 40,
+      attractionId: 40,
+      title: "Концерт на стадионе",
+      description: "На Казанской Арене пройдёт концерт мировых звёзд.",
+      status: "news",
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 to-white">
-      {/* Welcome Dialog */}
-      <Dialog open={showWelcome} onOpenChange={setShowWelcome}>
-        <DialogContent className="sm:max-w-md">
-          <DialogTitle className="text-2xl font-bold text-center text-primary">
-            Добро пожаловать в Казань!
-          </DialogTitle>
-          <div className="flex flex-col items-center gap-4 py-4">
-            <Icon name="map-pin" className="w-16 h-16 text-primary animate-bounce" />
-            <p className="text-center text-gray-600">
-              Откройте для себя культурное наследие и современные достопримечательности столицы Татарстана
-            </p>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Icon name="map-pin" className="w-8 h-8 text-primary" />
-              <h1 className="text-2xl font-bold text-primary">Kazan Guide</h1>
-            </div>
-            <div className="hidden md:flex gap-6">
-              <Button
-                variant="ghost"
-                onClick={() => scrollToSection("map")}
-                className="hover:text-primary"
-              >
-                Карта
-              </Button>
-              <Button
-                variant="ghost"
-                onClick={() => scrollToSection("attractions")}
-                className="hover:text-primary"
-              >
-                Достопримечательности
-              </Button>
-              <Button
-                variant="ghost"
-                onClick={() => scrollToSection("news")}
-                className="hover:text-primary"
-              >
-                Новости
-              </Button>
-              <Button
-                variant="ghost"
-                onClick={() => scrollToSection("reviews")}
-                className="hover:text-primary"
-              >
-                Отзывы
-              </Button>
-              <Button
-                variant="ghost"
-                onClick={() => scrollToSection("faq")}
-                className="hover:text-primary"
-              >
-                FAQ
-              </Button>
-            </div>
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="md:hidden">
-                  <Icon name="menu" className="w-6 h-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent>
-                <div className="flex flex-col gap-4 mt-8">
-                  <Button
-                    variant="ghost"
-                    onClick={() => scrollToSection("map")}
-                    className="justify-start"
-                  >
-                    <Icon name="map" className="w-5 h-5 mr-2" />
-                    Карта
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    onClick={() => scrollToSection("attractions")}
-                    className="justify-start"
-                  >
-                    <Icon name="landmark" className="w-5 h-5 mr-2" />
-                    Достопримечательности
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    onClick={() => scrollToSection("news")}
-                    className="justify-start"
-                  >
-                    <Icon name="newspaper" className="w-5 h-5 mr-2" />
-                    Новости
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    onClick={() => scrollToSection("reviews")}
-                    className="justify-start"
-                  >
-                    <Icon name="star" className="w-5 h-5 mr-2" />
-                    Отзывы
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    onClick={() => scrollToSection("faq")}
-                    className="justify-start"
-                  >
-                    <Icon name="help-circle" className="w-5 h-5 mr-2" />
-                    FAQ
-                  </Button>
-                </div>
-              </SheetContent>
-            </Sheet>
+    <div className="min-h-screen bg-background">
+      {showWelcome && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-primary/95 animate-fade-in">
+          <div className="text-center text-white animate-scale-in px-4">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-4">
+              Изучаем Татарстан
+            </h1>
+            <p className="text-lg md:text-xl">Откройте для себя красоту республики</p>
           </div>
         </div>
-      </nav>
+      )}
 
-      {/* Hero Section */}
-      <section className="relative py-20 px-4">
-        <div className="container mx-auto text-center">
-          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-amber-600 bg-clip-text text-transparent">
-            Откройте для себя Казань
-          </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Город, где встречаются Восток и Запад. Погрузитесь в богатую
-            историю, культуру и современную жизнь столицы Татарстана.
+      <header id="top" className="sticky top-0 z-40 bg-white shadow-sm">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            <button
+              onClick={() => scrollToSection("top")}
+              className="font-heading font-bold text-xl text-primary hover:text-primary/80 transition-colors"
+            >
+              Главная
+            </button>
+            <div className="flex items-center gap-4 md:gap-6">
+              <nav className="hidden md:flex gap-6">
+                <button
+                  onClick={() => scrollToSection("attractions")}
+                  className="text-foreground hover:text-primary transition-colors"
+                >
+                  Достопримечательности
+                </button>
+                <button
+                  onClick={() => scrollToSection("news")}
+                  className="text-foreground hover:text-primary transition-colors"
+                >
+                  Новости
+                </button>
+                <button
+                  onClick={() => scrollToSection("map")}
+                  className="text-foreground hover:text-primary transition-colors"
+                >
+                  Перейти к карте
+                </button>
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  className="text-foreground hover:text-primary transition-colors"
+                >
+                  Обратная связь
+                </button>
+              </nav>
+              
+              <Sheet>
+                <SheetTrigger asChild>
+                  <button className="flex items-center gap-2 text-foreground hover:text-primary transition-colors">
+                    <span className="text-2xl md:hidden">☰</span>
+                    <span className="hidden md:inline text-2xl"></span>
+                    <span className="hidden md:inline text-2xl"></span>
+                    <span className="hidden md:inline text-2xl">☰</span>
+                  </button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-80">
+                  <div className="flex flex-col gap-6 mt-8">
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start gap-3"
+                      onClick={() => {
+                        window.location.href = 'https://accounts.google.com/signin';
+                      }}
+                    >
+                      <Icon name="LogIn" size={20} />
+                      Войти через Google
+                    </Button>
+                    
+                    <div className="border-t pt-6">
+                      <h3 className="font-semibold mb-4 text-sm text-muted-foreground uppercase tracking-wide">Навигация</h3>
+                      <div className="flex flex-col gap-3">
+                        <button
+                          onClick={() => scrollToSection("attractions")}
+                          className="text-left px-4 py-2 rounded-md hover:bg-accent transition-colors"
+                        >
+                          Достопримечательности
+                        </button>
+                        <button
+                          onClick={() => scrollToSection("news")}
+                          className="text-left px-4 py-2 rounded-md hover:bg-accent transition-colors"
+                        >
+                          Новости
+                        </button>
+                        <button
+                          onClick={() => scrollToSection("map")}
+                          className="text-left px-4 py-2 rounded-md hover:bg-accent transition-colors"
+                        >
+                          Карта
+                        </button>
+                        <button
+                          onClick={() => scrollToSection("reviews")}
+                          className="text-left px-4 py-2 rounded-md hover:bg-accent transition-colors"
+                        >
+                          Отзывы
+                        </button>
+                        <button
+                          onClick={() => scrollToSection("contact")}
+                          className="text-left px-4 py-2 rounded-md hover:bg-accent transition-colors"
+                        >
+                          Обратная связь
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="border-t pt-6 mt-6">
+                      <div className="flex flex-col gap-3">
+                        <Button
+                          variant="default"
+                          className="w-full justify-start gap-3"
+                          onClick={() => {
+                            window.open('https://docs.google.com/forms/d/e/1FAIpQLSedn6MjQ5qIHRMMYHtDMJmee_-S47ubQSTLuikyCklLTagEpQ/viewform?usp=dialog', '_blank');
+                          }}
+                        >Тест по достопримечательностям</Button>
+                        
+                        <Button
+                          variant="outline"
+                          className="w-full justify-start gap-3"
+                          onClick={() => {
+                            window.open('https://docs.google.com/forms/d/e/1FAIpQLSfz-qcrvNdKDRsPxcRdfwLrbLbCzMWCSjT-9Kj6Uql0qHwkkg/viewform?usp=publish-editor', '_blank');
+                          }}
+                        >
+                          <Icon name="MessageSquare" size={20} />
+                          Оставить отзыв
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section className="from-primary/10 to-white my-0 px-4 py-24 md:py-[286px] bg-emerald-100 mx-0 rounded-0">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="md:text-5xl font-heading font-bold text-foreground mb-6 py-0 mx-0 px-0 text-xl">
+            Достопримечательности Республики Татарстан
+          </h1>
+          <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            Познакомьтесь с богатым культурным наследием Татарстана — от древних
+            городов до современных арт-объектов
           </p>
-          <Button
-            size="lg"
-            onClick={() => scrollToSection("map")}
-            className="group"
-          >
-            Начать путешествие
-            <Icon
-              name="arrow-right"
-              className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
-            />
-          </Button>
         </div>
       </section>
 
-      {/* Map Section */}
-      <section id="map" className="py-16 px-4 bg-white">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Интерактивная карта
+      <section id="map" className="py-12 md:py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-4xl font-heading font-bold text-center mb-8 md:mb-12">
+            Карта достопримечательностей
           </h2>
-          <YandexMap
-            attractions={attractions}
-            onMarkerClick={handleMarkerClick}
-          />
+          <div className="max-w-6xl mx-auto">
+            <YandexMap
+              attractions={attractions}
+              onMarkerClick={handleMarkerClick}
+            />
+          </div>
         </div>
       </section>
 
-      {/* Attractions List Section */}
-      <section
-        id="attractions"
-        ref={attractionsRef}
-        className="py-16 px-4 bg-gradient-to-b from-white to-amber-50"
-      >
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">
+      <section id="attractions" ref={attractionsRef} className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-4xl font-heading font-bold text-center mb-8 md:mb-12">
             Достопримечательности
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-6 mb-8">
             {attractions.slice(0, visibleAttractions).map((attraction) => (
               <Card
                 key={attraction.id}
-                className={`overflow-hidden hover:shadow-lg transition-all cursor-pointer ${
-                  selectedAttraction?.id === attraction.id
-                    ? "ring-2 ring-primary shadow-xl scale-105"
-                    : ""
-                }`}
+                className="overflow-hidden cursor-pointer group hover:shadow-xl transition-shadow"
                 onClick={() => setSelectedAttraction(attraction)}
               >
-                <div className="aspect-video relative overflow-hidden">
+                <div className="aspect-square overflow-hidden">
                   <img
-                    src={attraction.image}
+                    src={attraction.images[0]}
                     alt={attraction.name}
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-30"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{attraction.name}</h3>
-                  <p className="text-gray-600 mb-4 line-clamp-3">
-                    {attraction.description}
+                <div className="p-2 md:p-4">
+                  <h3 className="font-heading font-semibold text-sm md:text-lg mb-1 line-clamp-2">
+                    {attraction.name}
+                  </h3>
+                  <p className="text-xs md:text-sm text-muted-foreground mb-2">
+                    {attraction.city}
                   </p>
-                  <div className="flex items-center gap-2 text-sm text-gray-500">
-                    <Icon name="map-pin" className="w-4 h-4" />
-                    <span className="line-clamp-1">{attraction.address}</span>
-                  </div>
+                  <span className="inline-block px-2 py-1 text-xs bg-primary/10 text-primary rounded">
+                    {attraction.category}
+                  </span>
                 </div>
               </Card>
             ))}
           </div>
           {visibleAttractions < attractions.length && (
-            <div className="text-center mt-8">
+            <div className="text-center">
               <Button
-                onClick={() => setVisibleAttractions((prev) => prev + 6)}
-                variant="outline"
+                onClick={() =>
+                  setVisibleAttractions((prev) =>
+                    Math.min(prev + 5, attractions.length),
+                  )
+                }
                 size="lg"
+                className="font-semibold"
               >
-                Показать больше
-                <Icon name="chevron-down" className="ml-2 w-5 h-5" />
+                Показать ещё
               </Button>
             </div>
           )}
         </div>
       </section>
 
-      {/* Attraction Details Dialog */}
-      <Dialog
-        open={!!selectedAttraction}
-        onOpenChange={() => setSelectedAttraction(null)}
-      >
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-          {selectedAttraction && (
-            <>
-              <DialogTitle className="text-2xl font-bold">
-                {selectedAttraction.name}
-              </DialogTitle>
-              <div className="space-y-4">
-                <img
-                  src={selectedAttraction.image}
-                  alt={selectedAttraction.name}
-                  className="w-full h-64 object-cover rounded-lg"
-                />
-                <p className="text-gray-700">{selectedAttraction.description}</p>
-                <div className="space-y-2">
-                  <div className="flex items-start gap-2">
-                    <Icon
-                      name="map-pin"
-                      className="w-5 h-5 text-primary mt-1"
-                    />
-                    <div>
-                      <p className="font-semibold">Адрес:</p>
-                      <p className="text-gray-600">
-                        {selectedAttraction.address}
-                      </p>
-                    </div>
-                  </div>
-                  {selectedAttraction.workingHours && (
-                    <div className="flex items-start gap-2">
-                      <Icon
-                        name="clock"
-                        className="w-5 h-5 text-primary mt-1"
-                      />
-                      <div>
-                        <p className="font-semibold">Режим работы:</p>
-                        <p className="text-gray-600">
-                          {selectedAttraction.workingHours}
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                  {selectedAttraction.price && (
-                    <div className="flex items-start gap-2">
-                      <Icon
-                        name="ticket"
-                        className="w-5 h-5 text-primary mt-1"
-                      />
-                      <div>
-                        <p className="font-semibold">Стоимость:</p>
-                        <p className="text-gray-600">{selectedAttraction.price}</p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
-
-      {/* News Section */}
-      <section id="news" className="py-16 px-4 bg-white">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Новости и обновления
+      <section id="news" className="py-12 md:py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-4xl font-heading font-bold text-center mb-8 md:mb-12">
+            Новости
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {news.slice(0, visibleNews).map((item) => {
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-6 mb-8">
+            {news.slice(0, visibleNews).map((newsItem) => {
               const attraction = attractions.find(
-                (a) => a.id === item.attractionId
+                (a) => a.id === newsItem.attractionId,
               );
-              const badge = getStatusBadge(item.status);
               return (
                 <Card
-                  key={item.id}
-                  className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
-                  onClick={() => setSelectedNews(item)}
+                  key={newsItem.id}
+                  className="overflow-hidden cursor-pointer group hover:shadow-xl transition-shadow relative"
+                  onClick={() => setSelectedNews(newsItem)}
                 >
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-3">
-                      <Icon
-                        name={getStatusIcon(item.status)}
-                        className="w-6 h-6 text-primary"
-                      />
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs font-semibold ${badge.class}`}
-                      >
-                        {badge.text}
-                      </span>
+                  {newsItem.status === "all_good" && (
+                    <div className="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded z-10">
+                      все в порядке
                     </div>
-                    <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                    <p className="text-gray-600 mb-3 line-clamp-2">
-                      {item.description}
+                  )}
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={
+                        attraction?.images[0] ||
+                        "https://images.unsplash.com/photo-1586800463720-febbe6eb4028?w=800"
+                      }
+                      alt={newsItem.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-2 md:p-4">
+                    <h3 className="font-heading font-semibold text-sm md:text-lg mb-1 line-clamp-2">
+                      {newsItem.title}
+                    </h3>
+                    <p className="text-xs md:text-sm text-muted-foreground line-clamp-2">
+                      {newsItem.description}
                     </p>
-                    {attraction && (
-                      <div className="flex items-center gap-2 text-sm text-gray-500">
-                        <Icon name="map-pin" className="w-4 h-4" />
-                        <span className="line-clamp-1">{attraction.name}</span>
-                      </div>
-                    )}
                   </div>
                 </Card>
               );
             })}
           </div>
           {visibleNews < news.length && (
-            <div className="text-center mt-8">
+            <div className="text-center">
               <Button
-                onClick={() => setVisibleNews((prev) => prev + 6)}
-                variant="outline"
+                onClick={() =>
+                  setVisibleNews((prev) => Math.min(prev + 5, news.length))
+                }
                 size="lg"
+                className="font-semibold"
               >
-                Показать больше новостей
-                <Icon name="chevron-down" className="ml-2 w-5 h-5" />
+                Показать ещё
               </Button>
             </div>
           )}
         </div>
       </section>
 
-      {/* News Details Dialog */}
-      <Dialog open={!!selectedNews} onOpenChange={() => setSelectedNews(null)}>
-        <DialogContent className="max-w-2xl">
-          {selectedNews && (
-            <>
-              <DialogTitle className="text-2xl font-bold">
-                {selectedNews.title}
-              </DialogTitle>
-              <div className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <Icon
-                    name={getStatusIcon(selectedNews.status)}
-                    className="w-6 h-6 text-primary"
-                  />
-                  <span
-                    className={`px-3 py-1 rounded-full text-sm font-semibold ${
-                      getStatusBadge(selectedNews.status).class
-                    }`}
-                  >
-                    {getStatusBadge(selectedNews.status).text}
-                  </span>
-                </div>
-                <p className="text-gray-700">{selectedNews.description}</p>
-                {attractions.find((a) => a.id === selectedNews.attractionId) && (
-                  <div className="border-t pt-4">
-                    <h4 className="font-semibold mb-2">
-                      Связанная достопримечательность:
-                    </h4>
-                    <div className="flex items-center gap-2 text-gray-600">
-                      <Icon name="map-pin" className="w-5 h-5 text-primary" />
-                      {
-                        attractions.find((a) => a.id === selectedNews.attractionId)
-                          ?.name
-                      }
-                    </div>
-                  </div>
-                )}
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
-
-      {/* Reviews Section */}
-      <section id="reviews" className="py-16 px-4 bg-gradient-to-b from-white to-amber-50">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Отзывы туристов
-          </h2>
-          <ReviewsCarousel />
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section id="faq" className="py-16 px-4 bg-white">
-        <div className="container mx-auto max-w-3xl">
-          <h2 className="text-3xl font-bold mb-8 text-center">
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <h2 className="text-2xl md:text-4xl font-heading font-bold text-center mb-8 md:mb-12">
             Часто задаваемые вопросы
           </h2>
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-left">
-                Как добраться до центра города из аэропорта?
+          <Accordion type="single" collapsible className="space-y-4">
+            <AccordionItem
+              value="q1"
+              className="bg-white rounded-lg px-6 shadow-sm"
+            >
+              <AccordionTrigger className="font-semibold text-lg hover:text-primary">
+                Для чего был создан сайт?
               </AccordionTrigger>
-              <AccordionContent>
-                Из аэропорта Казани до центра города можно добраться на
-                автобусе №97 (до станции метро "Площадь Тукая") или на такси
-                (около 30-40 минут). Также доступен заказ трансфера через
-                приложения такси.
+              <AccordionContent className="text-muted-foreground">
+                Сайт был сделан в качестве проекта по информатике и участия в
+                научной конференции "Инженерная мысль" от КНИТУ-КАИ.
               </AccordionContent>
             </AccordionItem>
-
-            <AccordionItem value="item-2">
-              <AccordionTrigger className="text-left">
-                Какое лучшее время для посещения Казани?
+            <AccordionItem
+              value="q2"
+              className="bg-white rounded-lg px-6 shadow-sm"
+            >
+              <AccordionTrigger className="font-semibold text-lg hover:text-primary">
+                Про что сайт?
               </AccordionTrigger>
-              <AccordionContent>
-                Лучшее время для посещения Казани - с мая по сентябрь, когда
-                погода теплая и комфортная для прогулок. Особенно красива Казань
-                в июне во время праздника Сабантуй и в августе во время Дня
-                города.
+              <AccordionContent className="text-muted-foreground">
+                Сайт посвящен достопримечательностям Татарстана, которые стоит
+                посетить.
               </AccordionContent>
             </AccordionItem>
-
-            <AccordionItem value="item-3">
-              <AccordionTrigger className="text-left">
-                Нужна ли виза для посещения Казани?
+            <AccordionItem
+              value="q3"
+              className="bg-white rounded-lg px-6 shadow-sm"
+            >
+              <AccordionTrigger className="font-semibold text-lg hover:text-primary">
+                У меня есть вопросы, есть ли контактная информация для их
+                передачи?
               </AccordionTrigger>
-              <AccordionContent>
-                Казань находится в России, поэтому визовые требования такие же,
-                как и для всей страны. Гражданам многих стран СНГ виза не
-                требуется. Гражданам других стран следует уточнить визовые
-                требования в консульстве РФ.
+              <AccordionContent className="text-muted-foreground">
+                Да, есть. На сайте указана почта, на которую вы можете
+                отправлять свои вопросы.
               </AccordionContent>
             </AccordionItem>
-
-            <AccordionItem value="item-4">
-              <AccordionTrigger className="text-left">
-                Какие блюда татарской кухни стоит попробовать?
+            <AccordionItem
+              value="q4"
+              className="bg-white rounded-lg px-6 shadow-sm"
+            >
+              <AccordionTrigger className="font-semibold text-lg hover:text-primary">
+                Почему на сайте мало достопримечательностей?
               </AccordionTrigger>
-              <AccordionContent>
-                Обязательно попробуйте эчпочмак (треугольные пирожки с мясом и
-                картофелем), чак-чак (сладкое блюдо из теста с медом), казылык
-                (конская колбаса), кыстыбый (лепешка с начинкой) и перемяч
-                (жареный пирожок). Также рекомендуем посетить Музей Чак-Чака.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-5">
-              <AccordionTrigger className="text-left">
-                Сколько дней нужно для осмотра основных
-                достопримечательностей?
-              </AccordionTrigger>
-              <AccordionContent>
-                Для осмотра основных достопримечательностей Казани достаточно
-                2-3 дней. За это время вы успеете посетить Кремль, пройтись по
-                улице Баумана, посетить несколько музеев и насладиться местной
-                кухней. Для более глубокого знакомства с городом и окрестностями
-                рекомендуем выделить 5-7 дней.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-6">
-              <AccordionTrigger className="text-left">
-                Есть ли в Казани метро?
-              </AccordionTrigger>
-              <AccordionContent>
-                Да, в Казани есть метрополитен с одной линией, которая
-                соединяет северную и южную части города. Метро работает с 6:00
-                до 23:00. Стоимость проезда доступная, можно приобрести
-                многоразовые карты.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-7">
-              <AccordionTrigger className="text-left">
-                Где лучше остановиться в Казани?
-              </AccordionTrigger>
-              <AccordionContent>
-                Лучше всего выбирать отель в центре города, рядом с Кремлем или
-                улицей Баумана. Также хорошие варианты - районы Вахитовский и
-                Приволжский. Здесь развитая инфраструктура и близость к основным
-                достопримечательностям.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-8">
-              <AccordionTrigger className="text-left">
-                Можно ли использовать банковские карты?
-              </AccordionTrigger>
-              <AccordionContent>
-                Да, в Казани широко принимаются банковские карты российских
-                платежных систем (Мир, Visa, Mastercard). Банкоматы доступны по
-                всему городу. В туристических местах обычно можно расплатиться
-                картой.
+              <AccordionContent className="text-muted-foreground">
+                Сайт был сделан недавно как проектная работа, поэтому указаны не
+                все достопримечательности. В будущем мы планируем продолжить
+                поддержку сайта и увеличить количество достопримечательностей.
+                Если вы знаете что можно добавить, пишите нам на почту.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-4">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Icon name="map-pin" className="w-8 h-8" />
-                <h3 className="text-xl font-bold">Kazan Guide</h3>
-              </div>
-              <p className="text-gray-400">
-                Ваш надежный путеводитель по столице Татарстана
-              </p>
+      <section id="reviews" className="py-12 md:py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-4xl font-heading font-bold text-center mb-4 text-slate-800">ОТЗЫВЫ ЛЮДЕЙ О САЙТЕ</h2>
+          <p className="text-sm md:text-base text-center text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto">Узнайте, что думают другие люди о сайте и достопримечательностях Татарстана</p>
+          <ReviewsCarousel />
+        </div>
+      </section>
+
+      <footer id="contact" className="bg-foreground text-white py-8 md:py-12">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-2xl mx-auto mb-8">
+            <h3 className="text-xl md:text-2xl font-heading font-bold mb-4">
+              Обратная связь
+            </h3>
+            <p className="text-sm md:text-base mb-6">
+              Сайт был сделан в качестве проекта по информатике и участия в
+              научной конференции Инженерная мысль ученика 10 класса Ганеева
+              Эрнеста Тимуровича МБОУ Школа 70 г. Казань
+            </p>
+            <div className="flex items-center justify-center gap-2">
+              <Icon name="Mail" size={20} />
+              <a
+                href="mailto:nuri01919@gmail.com"
+                className="text-secondary hover:underline font-medium"
+              >
+                nuri01919@gmail.com
+              </a>
             </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Быстрые ссылки</h4>
-              <div className="space-y-2">
-                <Button
-                  variant="link"
-                  className="text-gray-400 hover:text-white p-0 h-auto"
-                  onClick={() => scrollToSection("map")}
-                >
-                  Карта
-                </Button>
-                <br />
-                <Button
-                  variant="link"
-                  className="text-gray-400 hover:text-white p-0 h-auto"
-                  onClick={() => scrollToSection("attractions")}
-                >
-                  Достопримечательности
-                </Button>
-                <br />
-                <Button
-                  variant="link"
-                  className="text-gray-400 hover:text-white p-0 h-auto"
-                  onClick={() => scrollToSection("news")}
-                >
-                  Новости
-                </Button>
-              </div>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Контакты</h4>
-              <div className="space-y-2 text-gray-400">
-                <p>Email: info@kazanguide.ru</p>
-                <p>Телефон: +7 (843) 123-45-67</p>
-              </div>
-            </div>
+            <p className="text-sm text-muted mt-2">
+              для связи напишите по почте
+            </p>
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>2024 Kazan Guide. Все права защищены.</p>
+          <div className="border-t border-white/20 pt-6">
+            <p className="text-sm text-muted">
+              © 2025 Достопримечательности Татарстана. Все права защищены.
+            </p>
           </div>
         </div>
       </footer>
 
-      {/* Scroll to Top Button */}
-      <Button
-        onClick={() => scrollToSection("top")}
-        className="fixed bottom-8 right-8 rounded-full w-12 h-12 shadow-lg"
-        size="icon"
+      <Dialog
+        open={!!selectedAttraction}
+        onOpenChange={() => setSelectedAttraction(null)}
       >
-        <Icon name="arrow-up" className="w-6 h-6" />
-      </Button>
+        <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
+          {selectedAttraction && (
+            <div>
+              <DialogTitle className="text-2xl md:text-4xl font-heading font-bold mb-4 md:mb-6">
+                {selectedAttraction.name}
+              </DialogTitle>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
+                {selectedAttraction.images.map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={img}
+                    alt={`${selectedAttraction.name} ${idx + 1}`}
+                    className="w-full h-64 object-cover rounded-lg"
+                  />
+                ))}
+              </div>
+
+              <div className="space-y-4 md:space-y-6">
+                <div className="flex flex-wrap gap-3 md:gap-4 items-center">
+                  <span className="inline-flex items-center gap-1 text-sm md:text-base text-muted-foreground">
+                    <Icon name="MapPin" size={18} />
+                    {selectedAttraction.city}
+                  </span>
+                  <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs md:text-sm font-medium">
+                    {selectedAttraction.category}
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-xl md:text-2xl font-heading font-semibold mb-2 md:mb-3">
+                    Описание
+                  </h3>
+                  <p className="text-base md:text-lg leading-relaxed">
+                    {selectedAttraction.fullDescription}
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl md:text-2xl font-heading font-semibold mb-2 md:mb-3">
+                    История
+                  </h3>
+                  <p className="text-base md:text-lg leading-relaxed whitespace-pre-line">
+                    {selectedAttraction.history}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={!!selectedNews} onOpenChange={() => setSelectedNews(null)}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogTitle className="text-2xl md:text-3xl font-heading font-bold mb-4">
+            {selectedNews?.title}
+          </DialogTitle>
+          {selectedNews && (
+            <div>
+              <img
+                src={
+                  attractions.find((a) => a.id === selectedNews.attractionId)
+                    ?.images[0] ||
+                  "https://images.unsplash.com/photo-1586800463720-febbe6eb4028?w=800"
+                }
+                alt={selectedNews.title}
+                className="w-full h-48 md:h-96 object-cover rounded-lg mb-4 md:mb-6"
+              />
+              <p className="text-base md:text-lg leading-relaxed">
+                {selectedNews.description}
+              </p>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
