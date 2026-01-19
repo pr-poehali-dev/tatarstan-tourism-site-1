@@ -461,21 +461,32 @@ const Index = () => {
                 </SheetTrigger>
                 <SheetContent side="right" className="w-80">
                   <div className="flex flex-col gap-6 mt-8">
-                    {auth.isAuthenticated ? (
+                    {auth.isAuthenticated || yandexAuth.isAuthenticated ? (
                       <div className="space-y-3">
                         <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
-                          {auth.user?.avatar_url && (
-                            <img src={auth.user.avatar_url} alt="Avatar" className="w-10 h-10 rounded-full" />
+                          {(auth.user?.avatar_url || yandexAuth.user?.avatar_url) && (
+                            <img 
+                              src={auth.user?.avatar_url || yandexAuth.user?.avatar_url || ''} 
+                              alt="Avatar" 
+                              className="w-10 h-10 rounded-full" 
+                            />
                           )}
                           <div className="flex-1 min-w-0">
-                            <p className="font-medium truncate">{auth.user?.name || 'Пользователь'}</p>
-                            <p className="text-sm text-muted-foreground truncate">{auth.user?.email}</p>
+                            <p className="font-medium truncate">
+                              {auth.user?.name || yandexAuth.user?.name || 'Пользователь'}
+                            </p>
+                            <p className="text-sm text-muted-foreground truncate">
+                              {auth.user?.email || yandexAuth.user?.email}
+                            </p>
                           </div>
                         </div>
                         <Button
                           variant="outline"
                           className="w-full justify-start gap-3"
-                          onClick={auth.logout}
+                          onClick={() => {
+                            if (auth.isAuthenticated) auth.logout();
+                            if (yandexAuth.isAuthenticated) yandexAuth.logout();
+                          }}
                         >
                           <Icon name="LogOut" size={20} />
                           Выйти
