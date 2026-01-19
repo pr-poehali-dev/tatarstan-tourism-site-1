@@ -15,6 +15,8 @@ import YandexMap from "@/components/YandexMap";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 import { useGoogleAuth } from "@/components/extensions/google-auth/useGoogleAuth";
 import { GoogleLoginButton } from "@/components/extensions/google-auth/GoogleLoginButton";
+import { useYandexAuth } from "@/components/extensions/yandex-auth/useYandexAuth";
+import { YandexLoginButton } from "@/components/extensions/yandex-auth/YandexLoginButton";
 
 type News = {
   id: number;
@@ -42,25 +44,32 @@ const Index = () => {
     },
   });
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('code')) {
-      auth.handleCallback(params).then((success) => {
-        if (success) {
-          window.history.replaceState({}, '', window.location.pathname);
-        }
-      });
-    }
-  }, []);
+  const yandexAuth = useYandexAuth({
+    apiUrls: {
+      authUrl: 'https://functions.poehali.dev/d47faa94-52ed-40ba-a557-9ebde756cdad?action=auth-url',
+      callback: 'https://functions.poehali.dev/d47faa94-52ed-40ba-a557-9ebde756cdad?action=callback',
+      refresh: 'https://functions.poehali.dev/d47faa94-52ed-40ba-a557-9ebde756cdad?action=refresh',
+      logout: 'https://functions.poehali.dev/d47faa94-52ed-40ba-a557-9ebde756cdad?action=logout',
+    },
+  });
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('code')) {
-      auth.handleCallback(params).then((success) => {
-        if (success) {
-          window.history.replaceState({}, '', window.location.pathname);
-        }
-      });
+      const state = params.get('state');
+      if (state?.includes('yandex')) {
+        yandexAuth.handleCallback(params).then((success) => {
+          if (success) {
+            window.history.replaceState({}, '', window.location.pathname);
+          }
+        });
+      } else {
+        auth.handleCallback(params).then((success) => {
+          if (success) {
+            window.history.replaceState({}, '', window.location.pathname);
+          }
+        });
+      }
     }
   }, []);
 
@@ -473,12 +482,20 @@ const Index = () => {
                         </Button>
                       </div>
                     ) : (
-                      <GoogleLoginButton
-                        onClick={auth.login}
-                        isLoading={auth.isLoading}
-                        buttonText="Вход"
-                        className="w-full justify-start gap-3"
-                      />
+                      <div className="space-y-3">
+                        <GoogleLoginButton
+                          onClick={auth.login}
+                          isLoading={auth.isLoading}
+                          buttonText="Вход"
+                          className="w-full justify-start gap-3"
+                        />
+                        <YandexLoginButton
+                          onClick={yandexAuth.login}
+                          isLoading={yandexAuth.isLoading}
+                          buttonText="Войти через Яндекс"
+                          className="w-full justify-start gap-3"
+                        />
+                      </div>
                     )}
                     
                     <div className="border-t pt-6">
