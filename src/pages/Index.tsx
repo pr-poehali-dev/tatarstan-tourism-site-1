@@ -37,36 +37,44 @@ const Index = () => {
 
   const auth = useGoogleAuth({
     apiUrls: {
-      authUrl: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=auth-url',
-      callback: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=callback',
-      refresh: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=refresh',
-      logout: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=logout',
+      authUrl:
+        "https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=auth-url",
+      callback:
+        "https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=callback",
+      refresh:
+        "https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=refresh",
+      logout:
+        "https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=logout",
     },
   });
 
   const yandexAuth = useYandexAuth({
     apiUrls: {
-      authUrl: 'https://functions.poehali.dev/d47faa94-52ed-40ba-a557-9ebde756cdad?action=auth-url',
-      callback: 'https://functions.poehali.dev/d47faa94-52ed-40ba-a557-9ebde756cdad?action=callback',
-      refresh: 'https://functions.poehali.dev/d47faa94-52ed-40ba-a557-9ebde756cdad?action=refresh',
-      logout: 'https://functions.poehali.dev/d47faa94-52ed-40ba-a557-9ebde756cdad?action=logout',
+      authUrl:
+        "https://functions.poehali.dev/d47faa94-52ed-40ba-a557-9ebde756cdad?action=auth-url",
+      callback:
+        "https://functions.poehali.dev/d47faa94-52ed-40ba-a557-9ebde756cdad?action=callback",
+      refresh:
+        "https://functions.poehali.dev/d47faa94-52ed-40ba-a557-9ebde756cdad?action=refresh",
+      logout:
+        "https://functions.poehali.dev/d47faa94-52ed-40ba-a557-9ebde756cdad?action=logout",
     },
   });
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    if (params.get('code')) {
-      const state = params.get('state');
-      if (state?.includes('yandex')) {
+    if (params.get("code")) {
+      const state = params.get("state");
+      if (state?.includes("yandex")) {
         yandexAuth.handleCallback(params).then((success) => {
           if (success) {
-            window.history.replaceState({}, '', window.location.pathname);
+            window.history.replaceState({}, "", window.location.pathname);
           }
         });
       } else {
         auth.handleCallback(params).then((success) => {
           if (success) {
-            window.history.replaceState({}, '', window.location.pathname);
+            window.history.replaceState({}, "", window.location.pathname);
           }
         });
       }
@@ -278,8 +286,7 @@ const Index = () => {
       id: 24,
       attractionId: 24,
       title: "Сезон наблюдения за птицами",
-      description:
-        "В Национальном парке начался период миграции редких птиц.",
+      description: "В Национальном парке начался период миграции редких птиц.",
       status: "news",
     },
     {
@@ -343,8 +350,7 @@ const Index = () => {
       id: 33,
       attractionId: 33,
       title: "Археологические находки",
-      description:
-        "В Великом Болгаре обнаружены новые артефакты XIII века.",
+      description: "В Великом Болгаре обнаружены новые артефакты XIII века.",
       status: "news",
     },
     {
@@ -373,7 +379,8 @@ const Index = () => {
       id: 37,
       attractionId: 37,
       title: "Литературный вечер",
-      description: "В Доме-музее Аксёнова пройдёт встреча с современными писателями.",
+      description:
+        "В Доме-музее Аксёнова пройдёт встреча с современными писателями.",
       status: "news",
     },
     {
@@ -408,7 +415,9 @@ const Index = () => {
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-4">
               Изучаем Татарстан
             </h1>
-            <p className="text-lg md:text-xl">Откройте для себя красоту республики</p>
+            <p className="text-lg md:text-xl">
+              Откройте для себя красоту республики
+            </p>
           </div>
         </div>
       )}
@@ -449,7 +458,7 @@ const Index = () => {
                   Обратная связь
                 </button>
               </nav>
-              
+
               <Sheet>
                 <SheetTrigger asChild>
                   <button className="flex items-center gap-2 text-foreground hover:text-primary transition-colors">
@@ -464,16 +473,23 @@ const Index = () => {
                     {auth.isAuthenticated || yandexAuth.isAuthenticated ? (
                       <div className="space-y-3">
                         <div className="flex items-center gap-3 p-3 bg-accent rounded-lg">
-                          {(auth.user?.avatar_url || yandexAuth.user?.avatar_url) && (
-                            <img 
-                              src={auth.user?.avatar_url || yandexAuth.user?.avatar_url || ''} 
-                              alt="Avatar" 
-                              className="w-10 h-10 rounded-full" 
+                          {(auth.user?.avatar_url ||
+                            yandexAuth.user?.avatar_url) && (
+                            <img
+                              src={
+                                auth.user?.avatar_url ||
+                                yandexAuth.user?.avatar_url ||
+                                ""
+                              }
+                              alt="Avatar"
+                              className="w-10 h-10 rounded-full"
                             />
                           )}
                           <div className="flex-1 min-w-0">
                             <p className="font-medium truncate">
-                              {auth.user?.name || yandexAuth.user?.name || 'Пользователь'}
+                              {auth.user?.name ||
+                                yandexAuth.user?.name ||
+                                "Пользователь"}
                             </p>
                             <p className="text-sm text-muted-foreground truncate">
                               {auth.user?.email || yandexAuth.user?.email}
@@ -508,9 +524,11 @@ const Index = () => {
                         />
                       </div>
                     )}
-                    
+
                     <div className="border-t pt-6">
-                      <h3 className="font-semibold mb-4 text-sm text-muted-foreground uppercase tracking-wide">Навигация</h3>
+                      <h3 className="font-semibold mb-4 text-sm text-muted-foreground uppercase tracking-wide">
+                        Навигация
+                      </h3>
                       <div className="flex flex-col gap-3">
                         <button
                           onClick={() => scrollToSection("attractions")}
@@ -551,15 +569,23 @@ const Index = () => {
                           variant="default"
                           className="w-full justify-start gap-3"
                           onClick={() => {
-                            window.open('https://docs.google.com/forms/d/e/1FAIpQLSedn6MjQ5qIHRMMYHtDMJmee_-S47ubQSTLuikyCklLTagEpQ/viewform?usp=dialog', '_blank');
+                            window.open(
+                              "https://docs.google.com/forms/d/e/1FAIpQLSedn6MjQ5qIHRMMYHtDMJmee_-S47ubQSTLuikyCklLTagEpQ/viewform?usp=dialog",
+                              "_blank",
+                            );
                           }}
-                        >Тест по достопримечательностям</Button>
-                        
+                        >
+                          Тест по достопримечательностям
+                        </Button>
+
                         <Button
                           variant="outline"
                           className="w-full justify-start gap-3"
                           onClick={() => {
-                            window.open('https://docs.google.com/forms/d/e/1FAIpQLSfz-qcrvNdKDRsPxcRdfwLrbLbCzMWCSjT-9Kj6Uql0qHwkkg/viewform?usp=publish-editor', '_blank');
+                            window.open(
+                              "https://docs.google.com/forms/d/e/1FAIpQLSfz-qcrvNdKDRsPxcRdfwLrbLbCzMWCSjT-9Kj6Uql0qHwkkg/viewform?usp=publish-editor",
+                              "_blank",
+                            );
                           }}
                         >
                           <Icon name="MessageSquare" size={20} />
@@ -726,7 +752,8 @@ const Index = () => {
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
                 Сайт был сделан в качестве проекта по информатике и участия в
-                научной конференции "Инженерная мысль" от КНИТУ-КАИ.
+                научной конференции "Инженерная мысль" от КНИТУ-КАИ, а также в
+                городском конкурсе виртуальный гид.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem
@@ -774,8 +801,13 @@ const Index = () => {
 
       <section id="reviews" className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-4xl font-heading font-bold text-center mb-4 text-slate-800">ОТЗЫВЫ ЛЮДЕЙ О САЙТЕ</h2>
-          <p className="text-sm md:text-base text-center text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto">Узнайте, что думают другие люди о сайте и достопримечательностях Татарстана</p>
+          <h2 className="text-2xl md:text-4xl font-heading font-bold text-center mb-4 text-slate-800">
+            ОТЗЫВЫ ЛЮДЕЙ О САЙТЕ
+          </h2>
+          <p className="text-sm md:text-base text-center text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto">
+            Узнайте, что думают другие люди о сайте и достопримечательностях
+            Татарстана
+          </p>
           <ReviewsCarousel />
         </div>
       </section>
@@ -787,9 +819,10 @@ const Index = () => {
               Обратная связь
             </h3>
             <p className="text-sm md:text-base mb-6">
-              Сайт был сделан в качестве проекта по информатике и участия в
-              научной конференции Инженерная мысль ученика 10 класса Ганеева
-              Эрнеста Тимуровича МБОУ Школа 70 г. Казань
+              Сайт был сделан в качестве проекта по информатике, участия в
+              научной конференции Инженерная мысль и в городском конкурсе
+              Виртуальный гид ученика 10 класса Ганеева Эрнеста Тимуровича МБОУ
+              Школа 70 г. Казань
             </p>
             <div className="flex items-center justify-center gap-2">
               <Icon name="Mail" size={20} />
