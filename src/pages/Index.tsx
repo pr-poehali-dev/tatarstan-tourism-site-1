@@ -53,15 +53,6 @@ const Index = () => {
     }
   }, []);
 
-  const auth = useGoogleAuth({
-    apiUrls: {
-      authUrl: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=auth-url',
-      callback: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=callback',
-      refresh: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=refresh',
-      logout: 'https://functions.poehali.dev/4007e36a-bf97-42d3-a56a-af3ea794cb94?action=logout',
-    },
-  });
-
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('code')) {
